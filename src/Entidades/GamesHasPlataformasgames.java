@@ -103,5 +103,5 @@ public class GamesHasPlataformasgames implements Serializable {
     public String toString() {
         return "Entidades.GamesHasPlataformasgames[ gamesHasPlataformasgamesPK=" + gamesHasPlataformasgamesPK + " ]";
     }
-    
+
 }

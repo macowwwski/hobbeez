@@ -75,5 +75,5 @@ public class GamesHasPlataformasgamesPK implements Serializable {
     public String toString() {
         return "Entidades.GamesHasPlataformasgamesPK[ gamesprodutosidProduto=" + gamesprodutosidProduto + ", plataformasgamesidPlataforma=" + plataformasgamesidPlataforma + " ]";
     }
-    
+
 }

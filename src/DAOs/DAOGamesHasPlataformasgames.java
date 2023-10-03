@@ -1,6 +1,9 @@
 package DAOs;
 
+import static DAOs.DAOGenerico.em;
 import Entidades.GamesHasPlataformasgames;
+import Entidades.GamesHasPlataformasgamesPK;
+import static Entidades.GamesHasPlataformasgames_.gamesHasPlataformasgamesPK;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +16,10 @@ public class DAOGamesHasPlataformasgames extends DAOGenerico<GamesHasPlataformas
         super(GamesHasPlataformasgames.class);
     }
 
+    public GamesHasPlataformasgames obter(GamesHasPlataformasgamesPK,gamesHasPlataformasgamesPK) {
+        return em.find(GamesHasPlataformasgames.class, gamesHasPlataformasgamesPK);
+    }
+    
     public int autoIdGamesHasPlataformasgames() {
         Integer a = (Integer) em.createQuery("SELECT MAX(e.id) FROM GamesHasPlataformasgames e ").getSingleResult();
         if (a != null) {
@@ -50,7 +57,7 @@ public class DAOGamesHasPlataformasgames extends DAOGenerico<GamesHasPlataformas
         DAOGamesHasPlataformasgames daoGamesHasPlataformasgames = new DAOGamesHasPlataformasgames();
         List<GamesHasPlataformasgames> listaGamesHasPlataformasgames = daoGamesHasPlataformasgames.list();
         for (GamesHasPlataformasgames gamesHasPlataformasgames : listaGamesHasPlataformasgames) {
-            System.out.println(gamesHasPlataformasgames.getGames_produtos_idProduto() + "-" + gamesHasPlataformasgames.getPlataformasgames_idPlataforma() + "-" + gamesHasPlataformasgames.getStatus() + "-" + "");
+            System.out.println(gamesHasPlataformasgames.getGames()+ "-" + gamesHasPlataformasgames.getStatus()+ "-" + gamesHasPlataformasgames.getGamesHasPlataformasgamesPK()+ "-" + gamesHasPlataformasgames.getPlataformasgames()+ "");
         }
     }
 }
