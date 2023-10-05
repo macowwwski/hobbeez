@@ -26,6 +26,7 @@ public class MenuGUI extends JFrame {
     private JButton btProdutos = new JButton("Produtos");
     private JButton btMarcas = new JButton("Marcas");
     private JButton btPlataformasgames = new JButton("Plataformas de jogos");
+    private JButton btGamesHasPlataformasgames = new JButton("Game Has Plataformas de jogos");
    
 
     public MenuGUI() {
@@ -38,6 +39,7 @@ public class MenuGUI extends JFrame {
         cp.add(btProdutos);
         cp.add(btMarcas);
         cp.add(btPlataformasgames);
+        cp.add(btGamesHasPlataformasgames);
        
 
         btProdutos.addActionListener(new ActionListener() {
@@ -69,6 +71,17 @@ public class MenuGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     PlataformasGamesGUI plataformasGamesGUI = new PlataformasGamesGUI();
+                } catch (ParseException ex) {
+                    Logger.getLogger(MenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        });
+        btGamesHasPlataformasgames.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    GamesHasPlataformasgamesGUI gamesHasPlataformasgames = new GamesHasPlataformasgamesGUI();
                 } catch (ParseException ex) {
                     Logger.getLogger(MenuGUI.class.getName()).log(Level.SEVERE, null, ex);
                 }

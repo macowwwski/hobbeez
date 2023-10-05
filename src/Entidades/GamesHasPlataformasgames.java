@@ -101,7 +101,7 @@ public class GamesHasPlataformasgames implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.GamesHasPlataformasgames[ gamesHasPlataformasgamesPK=" + gamesHasPlataformasgamesPK + " ]";
+        return getGames() + ";" + getPlataformasgames() + ";" + getStatus();
     }
 
 }

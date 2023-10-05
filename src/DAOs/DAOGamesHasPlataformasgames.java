@@ -3,7 +3,6 @@ package DAOs;
 import static DAOs.DAOGenerico.em;
 import Entidades.GamesHasPlataformasgames;
 import Entidades.GamesHasPlataformasgamesPK;
-import static Entidades.GamesHasPlataformasgames_.gamesHasPlataformasgamesPK;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +15,7 @@ public class DAOGamesHasPlataformasgames extends DAOGenerico<GamesHasPlataformas
         super(GamesHasPlataformasgames.class);
     }
 
-    public GamesHasPlataformasgames obter(GamesHasPlataformasgamesPK,gamesHasPlataformasgamesPK) {
+    public GamesHasPlataformasgames obter(GamesHasPlataformasgamesPK gamesHasPlataformasgamesPK) {
         return em.find(GamesHasPlataformasgames.class, gamesHasPlataformasgamesPK);
     }
     

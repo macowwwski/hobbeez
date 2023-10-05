@@ -1,7 +1,10 @@
 package GUIs;
 
+import DAOs.DAOGames;
 import Entidades.GamesHasPlataformasgames;
 import DAOs.DAOGamesHasPlataformasgames;
+import DAOs.DAOPlataformasgames;
+import Entidades.GamesHasPlataformasgamesPK;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -26,18 +29,8 @@ import javax.swing.JTextField;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import tools.CaixaDeFerramentas;
-import javax.swing.JCheckBox;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.SwingConstants;
-import java.awt.Font;
-import java.util.Date;
-import tools.CopiarArquivos;
-import javax.swing.ImageIcon;
-import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import tools.ManipulaArquivo;
 import java.text.ParseException;
 
 /**
@@ -51,7 +44,6 @@ public class GamesHasPlataformasgamesGUI extends JDialog {
     JPanel pnCentro = new JPanel();
     JPanel pnSul = new JPanel();
     JPanel pnLeste = new JPanel(new BorderLayout());
-    JPanel pnLesteA = new JPanel(new FlowLayout(FlowLayout.CENTER));
     JButton btBuscar = new JButton("Buscar");
     JButton btAdicionar = new JButton("Adicionar");
     JButton btSalvar = new JButton("Salvar");
@@ -59,6 +51,7 @@ public class GamesHasPlataformasgamesGUI extends JDialog {
     JButton btExcluir = new JButton("Excluir");
     JButton btListar = new JButton("Listar");
     JButton btCancelar = new JButton("Cancelar");
+    JButton jButton = new JButton();
     String acao = "";
     private JScrollPane scrollTabela = new JScrollPane();
 
@@ -79,6 +72,8 @@ public class GamesHasPlataformasgamesGUI extends JDialog {
     JLabel lbVazio = new JLabel("");
     DAOGamesHasPlataformasgames daoGamesHasPlataformasgames = new DAOGamesHasPlataformasgames();
     GamesHasPlataformasgames gamesHasPlataformasgames = new GamesHasPlataformasgames();
+    DAOGames daoGames = new DAOGames();
+    DAOPlataformasgames daoPlataformasgames = new DAOPlataformasgames();
     String[] colunas = new String[]{"games_produtos_idProduto", "plataformasgames_idPlataforma", "status"};
     String[][] dados = new String[0][colunas.length];
 
@@ -148,8 +143,8 @@ public class GamesHasPlataformasgamesGUI extends JDialog {
         pnAvisos.add(new JLabel("Avisos"));
 
 // localizar game e plataforma
-        
-        
+   GamesHasPlataformasgamesPK ghpPK = new GamesHasPlataformasgamesPK(); 
+   
 // listener Buscar
         btBuscar.addActionListener(new ActionListener() {
             @Override
@@ -162,7 +157,7 @@ public class GamesHasPlataformasgamesGUI extends JDialog {
                         btAdicionar.setVisible(false);
                         btAlterar.setVisible(true);
                         btExcluir.setVisible(true);
-                        tfPlataformasgames_idPlataforma.setText(String.valueOf(gamesHasPlataformasgames.getPlataformasgames_idPlataforma()));
+                        tfPlataformasgames_idPlataforma.setText(String.valueOf(gamesHasPlataformasgames.getGamesHasPlataformasgamesPK().getPlataformasgamesidPlataforma()));
                         tfPlataformasgames_idPlataforma.setEditable(false);
                         tfStatus.setText(String.valueOf(gamesHasPlataformasgames.getStatus()));
                         tfStatus.setEditable(false);
@@ -209,8 +204,8 @@ public class GamesHasPlataformasgamesGUI extends JDialog {
                     gamesHasPlataformasgames = new GamesHasPlataformasgames();
                 }
                 try {
-                    gamesHasPlataformasgames.setGames_produtos_idProduto(Integer.valueOf(tfGames_produtos_idProduto.getText()));
-                    gamesHasPlataformasgames.setPlataformasgames_idPlataforma(Integer.valueOf(tfPlataformasgames_idPlataforma.getText()));
+                    gamesHasPlataformasgames.setGames(daoGames.obter(Integer.valueOf(tfGames_produtos_idProduto.getText())));
+                    gamesHasPlataformasgames.setPlataformasgames(daoPlataformasgames.obter(Integer.valueOf(tfPlataformasgames_idPlataforma.getText())));
                     gamesHasPlataformasgames.setStatus(tfStatus.getText());
                     if (acao.equals("adicionar")) {
                         daoGamesHasPlataformasgames.inserir(gamesHasPlataformasgames);
@@ -281,7 +276,6 @@ public class GamesHasPlataformasgamesGUI extends JDialog {
                 }
             }
         });
-
 // listener Listar
         btListar.addActionListener(new ActionListener() {
             @Override

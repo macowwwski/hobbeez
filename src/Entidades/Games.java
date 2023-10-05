@@ -149,10 +149,6 @@ public class Games implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Entidades.Games[ produtosidProduto=" + produtosidProduto + " ]";
-    }
 
     public List<Plataformasgames> getPlataformasgamesList() {
         return plataformasgamesList;
@@ -168,6 +164,12 @@ public class Games implements Serializable {
 
     public void setGamesHasPlataformasgamesList(List<GamesHasPlataformasgames> gamesHasPlataformasgamesList) {
         this.gamesHasPlataformasgamesList = gamesHasPlataformasgamesList;
+    }
+    
+    
+    @Override
+    public String toString() {
+        return produtosidProduto + ";" + getProdutos().getNomeProduto() + getIdPlataforma();
     }
     
 }

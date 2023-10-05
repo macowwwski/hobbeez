@@ -65,7 +65,7 @@ public class ProdutosGUI extends JDialog {
 
     //painéis das entidades que são o tipo do produto
     JPanel pnCds = new JPanel(new GridLayout(4, 2));
-    JPanel pnGames = new JPanel(new GridLayout(4, 2));
+    JPanel pnGames = new JPanel(new GridLayout(6, 2));
     JPanel pnSkates = new JPanel(new GridLayout(3, 2));
     
     JButton btBuscar = new JButton("Buscar");
@@ -133,6 +133,10 @@ public class ProdutosGUI extends JDialog {
     JTextField tfPrecoGm = new JTextField(30);
     
     JLabel lbPlataformas = new JLabel("Plataformas: ");
+    JCheckBox cbXboxX = new JCheckBox("Xbox Series X");
+    JCheckBox cbNintendoS = new JCheckBox("Nintendo Switch");
+    JCheckBox cbPS5 = new JCheckBox("Playstation 5");
+    JCheckBox cbAtari2600 = new JCheckBox("Atari 2600");
 
     //verificar isso, relação de games pra plataformas é 1:n
     //JComboBox cmbPlataforma = new JComboBox(comboBoxModel);
@@ -277,7 +281,10 @@ public class ProdutosGUI extends JDialog {
         pnGames.add(lbPrecoGm);
         pnGames.add(tfPrecoGm);
         pnGames.add(lbPlataformas);
-        pnGames.add(cmbPlataformas);
+        pnGames.add(cbXboxX);
+        pnGames.add(cbPS5);
+        pnGames.add(cbNintendoS);
+        pnGames.add(cbAtari2600);
         pnGames.setVisible(false);
         
         String[] listaPlataformas = daoPlataformasgames.listInOrderNomeStringsArray();
