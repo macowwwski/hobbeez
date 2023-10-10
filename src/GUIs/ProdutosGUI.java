@@ -648,6 +648,8 @@ public class ProdutosGUI extends JDialog {
             }
         }
         );
+        
+        
 
 // listener Listar
         btListar.addActionListener(
